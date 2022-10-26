@@ -28,3 +28,9 @@ module "vpc" {
     Environment = "test"
   }
 }
+
+module "ec2" {
+  source = "terraform-aws-modules/ec2/aws"
+
+  
+}
