@@ -3,8 +3,7 @@ provider "aws" {
 }
 
 locals {
-  configfile = file("${path.cwd}/config.yml")
-  config = yamldecode(local.configfile)
+  config = yamldecode(file("${path.cwd}/config.yml"))
 
   tags = {
     GithubRepo = "bastionsofwill/linux-study"
