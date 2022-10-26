@@ -29,8 +29,8 @@ module "vpc" {
   }
 }
 
-module "ec2" {
-  source = "terraform-aws-modules/ec2/aws"
+# module "ec2" {
+#   source = "terraform-aws-modules/ec2/aws"
 
   
-}
+# }
