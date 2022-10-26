@@ -1,0 +1,7 @@
+name: "linuxstudy-${replace(basename(path.cwd), "_", "-")}"
+region: "ap-northeast-2"
+azs: ["ap-northeast-2"]
+cidr: "10.0.0.0/16"
+public_subnets: ["10.0.101.0/24"]
+enable_nat_gateway: false
+enable_vpn_gateway: false
