@@ -16,6 +16,3 @@ output "sg_id" {
 output "sg_name" {
   value = module.linux-study-sg.security_group_name
 }
-output "ec2_ids" {
-  value = module.linux-study-ec2.id
-}
