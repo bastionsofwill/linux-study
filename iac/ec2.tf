@@ -6,7 +6,7 @@ module "linux-study-ec2" {
   ami                    = each.value.ami
   key_name               = each.value.key_name
   monitoring             = each.value.monitoring
-  vpc_security_group_ids = tolist(local.sg_id)
+  vpc_security_group_ids = split(",", local.sg_id)
   subnet_id              = local.subnet_id
   private_ip             = each.value.private_ip
 }
