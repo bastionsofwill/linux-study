@@ -10,3 +10,9 @@ module "linux-study-ec2" {
   subnet_id              = local.subnet_id
   private_ip             = each.value.private_ip
 }
+
+resource "aws_eip" "linux-study-eip" {
+  for_each = module.linux-study-ec2
+  instance = each.value.id
+  vpc      = true
+}
