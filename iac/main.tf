@@ -1,36 +1,14 @@
 provider "aws" {
-    region = local.config.region
+  region = local.vpc_config.region
 }
 
 locals {
-  config = yamldecode(file("./config.yml"))
-
+  vpc_config = yamldecode(file("./vpc_config.yml"))
+  ec2_config = yamldecode(file("./ec2_config.yml"))
+  vpc_id     = module.linux-study-vpc.vpc_id
+  sg_id      = module.linux-study-sg.security_group_id
+  subnet_id  = module.linux-study-vpc.public_subnets[0]
   tags = {
     GithubRepo = "bastionsofwill/linux-study"
   }
 }
-
-module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
-
-  name = local.config.name
-  cidr = local.config.cidr
-
-  azs             = local.config.azs
-#   private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-  public_subnets  = local.config.public_subnets
-
-  enable_nat_gateway = local.config.enable_nat_gateway
-  enable_vpn_gateway = local.config.enable_vpn_gateway
-
-  tags = {
-    Terraform = "true"
-    Environment = "test"
-  }
-}
-
-# module "ec2" {
-#   source = "terraform-aws-modules/ec2/aws"
-
-  
-# }
