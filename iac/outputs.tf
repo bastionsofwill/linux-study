@@ -10,9 +10,6 @@ output "vpc_public_subnets_cidr_blocks" {
 output "vpc_id" {
   value = module.linux-study-vpc.vpc_id
 }
-output "vpc_az" {
-  value = module.linux-study-vpc.azs
-}
 output "sg_id" {
   value = module.linux-study-sg.security_group_id
 }
