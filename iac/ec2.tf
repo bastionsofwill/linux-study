@@ -9,6 +9,7 @@ module "linux-study-ec2" {
   vpc_security_group_ids = split(",", local.sg_id)
   subnet_id              = local.subnet_id
   private_ip             = each.value.private_ip
+  tags = merge(each.value.tags, local.tags)
 }
 
 resource "aws_eip" "linux-study-eip" {
