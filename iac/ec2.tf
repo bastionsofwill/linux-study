@@ -1,6 +1,6 @@
 module "linux-study-ec2" {
-  source = "terraform-aws-modules/ec2-instance/aws"
-  #   version = "~> 4.1"
+  source                 = "terraform-aws-modules/ec2-instance/aws"
+  version                = "5.5.0"
   for_each               = local.ec2_config
   name                   = each.value.name
   ami                    = each.value.ami
@@ -9,7 +9,7 @@ module "linux-study-ec2" {
   vpc_security_group_ids = split(",", local.sg_id)
   subnet_id              = local.subnet_id
   private_ip             = each.value.private_ip
-  tags = merge(each.value.tags, local.tags)
+  tags                   = merge(each.value.tags, local.tags)
 }
 
 resource "aws_eip" "linux-study-eip" {
