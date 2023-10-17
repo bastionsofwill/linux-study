@@ -1,5 +1,6 @@
 module "linux-study-vpc" {
   source = "terraform-aws-modules/vpc/aws"
+  version = 5.1.2
 
   name = local.vpc_config.name
   cidr = local.vpc_config.cidr
